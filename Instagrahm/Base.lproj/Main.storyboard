@@ -36,6 +36,9 @@
                                 <rect key="frame" x="207" y="282" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="didTapSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mN3-tU-kys"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAC-c1-0xy">
                                 <rect key="frame" x="45" y="336" width="86" height="30"/>
@@ -74,15 +77,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="didTapSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uks-PB-0Rs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordText" destination="tpb-SE-ykg" id="cBs-y7-t25"/>
+                        <outlet property="usernameText" destination="YXt-Pt-FIJ" id="ApP-tS-3pb"/>
+                        <segue destination="tH4-oz-yJx" kind="presentation" identifier="createAccountSegue" id="aHC-a0-tC9"/>
+                        <segue destination="vWK-aa-1v3" kind="presentation" identifier="signInSegue" id="T4G-zM-d7I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+            <point key="canvasLocation" x="78" y="10"/>
         </scene>
         <!--IGCreateAccountViewController-->
         <scene sceneID="c8k-ar-NOU">
@@ -150,15 +162,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Create Account"/>
+                                <connections>
+                                    <action selector="didTapCreateAccount:" destination="tH4-oz-yJx" eventType="touchUpInside" id="NBQ-Ez-8cc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Wi3-k1-t3u"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="Yed-c1-Xui" id="S6n-in-KAm"/>
+                        <outlet property="passwordField" destination="R6M-Gu-kJR" id="j8t-Dj-CWo"/>
+                        <outlet property="usernameField" destination="Rh8-lV-ZMb" id="8Pe-k1-Ovn"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="accountCreatedSegue" id="6zO-Zl-oFy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9c-9c-8y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="678"/>
+            <point key="canvasLocation" x="77" y="734"/>
         </scene>
         <!--IGTimelineViewController-->
         <scene sceneID="ptn-tg-Kk7">
@@ -170,10 +191,29 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NJ9-cH-8lF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8Rq-P6-jrc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcu-wh-XUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="23"/>
+            <point key="canvasLocation" x="1852.1739130434785" y="22.767857142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9wz-lh-Zt5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vWK-aa-1v3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bvn-sb-63H">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L2D-UT-aOn" kind="relationship" relationship="rootViewController" id="2eX-Si-NKB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u3b-x9-bUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942.02898550724649" y="22.767857142857142"/>
         </scene>
     </scenes>
     <resources>

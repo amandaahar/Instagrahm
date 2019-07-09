@@ -7,8 +7,11 @@
 //
 
 #import "IGLoginViewController.h"
+#import "Parse/Parse.h"
 
 @interface IGLoginViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameText;
+@property (weak, nonatomic) IBOutlet UITextField *passwordText;
 
 @end
 
@@ -18,6 +21,44 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
+- (IBAction)didTapSignUp:(id)sender {
+    [self performSegueWithIdentifier:@"createAccountSegue" sender:nil];
+}
+
+- (IBAction)didTapSignIn:(id)sender {
+    [self loginUser];
+    
+    [self performSegueWithIdentifier:@"signInSegue" sender:nil];
+    
+}
+
+- (void)loginUser {
+    NSString *username = self.usernameText.text;
+    NSString *password = self.passwordText.text;
+    
+    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
+        if (error != nil) {
+            NSLog(@"User log in failed: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User logged in successfully");
+            
+            // display view controller that needs to shown after successful login --- present VC or segue to VC??
+        }
+    }];
+}
+
+-(NSString*)getUsername {
+    return self.usernameText.text;
+}
+
+-(NSString*)getPassword {
+    return self.passwordText.text;
+}
+
+
+
 
 /*
 #pragma mark - Navigation
