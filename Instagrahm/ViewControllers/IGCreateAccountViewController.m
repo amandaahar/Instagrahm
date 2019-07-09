@@ -40,7 +40,7 @@
             NSLog(@"User registered successfully");
             
             // manually segue to logged in view
-            [self performSegueWithIdentifier:@"accountCreatedSegue" sender:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
 }

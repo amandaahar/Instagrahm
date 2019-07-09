@@ -23,7 +23,18 @@
         configuration.server = @"http://instagrahm.herokuapp.com/parse";
     }];
     
+    
+    
     [Parse initializeWithConfiguration:config];
+    
+    
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TimelineNavigationController"];
+    }
+     
+    
     return YES;
 }
 

@@ -13,7 +13,7 @@
         <!--IGLoginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="IGLoginViewController" id="BYZ-38-t0r" customClass="IGLoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="IGLoginViewController" id="BYZ-38-t0r" customClass="IGLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +174,6 @@
                         <outlet property="emailField" destination="Yed-c1-Xui" id="S6n-in-KAm"/>
                         <outlet property="passwordField" destination="R6M-Gu-kJR" id="j8t-Dj-CWo"/>
                         <outlet property="usernameField" destination="Rh8-lV-ZMb" id="8Pe-k1-Ovn"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="accountCreatedSegue" id="6zO-Zl-oFy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9c-9c-8y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -191,7 +190,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="NJ9-cH-8lF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8Rq-P6-jrc"/>
+                    <navigationItem key="navigationItem" id="8Rq-P6-jrc">
+                        <barButtonItem key="leftBarButtonItem" title="LogoutButton" image="profile_tab" style="plain" id="PpH-3S-5lN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9ym-f3-uTR">
+                                <rect key="frame" x="20" y="2.5" width="92" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButton:" destination="L2D-UT-aOn" eventType="touchUpInside" id="Rgz-u0-RXu"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcu-wh-XUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,7 +211,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9wz-lh-Zt5">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vWK-aa-1v3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TimelineNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="vWK-aa-1v3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bvn-sb-63H">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -218,5 +229,6 @@
     </scenes>
     <resources>
         <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
     </resources>
 </document>
