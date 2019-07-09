@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,13 +11,15 @@
 		C7B06A1F9E2E4254A4AD46D3 /* Pods_InstagrahmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4D7DF007FA973D737DFA31 /* Pods_InstagrahmTests.framework */; };
 		E3B23ED5298A6378DB733426 /* Pods_InstagrahmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4EFD25B692A82340B01E87 /* Pods_InstagrahmUITests.framework */; };
 		E79639CC22D401E50058A50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639CB22D401E50058A50B /* AppDelegate.m */; };
-		E79639CF22D401E50058A50B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639CE22D401E50058A50B /* ViewController.m */; };
 		E79639D222D401E50058A50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79639D022D401E50058A50B /* Main.storyboard */; };
 		E79639D422D401E50058A50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79639D322D401E50058A50B /* Assets.xcassets */; };
 		E79639D722D401E50058A50B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79639D522D401E50058A50B /* LaunchScreen.storyboard */; };
 		E79639DA22D401E50058A50B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639D922D401E50058A50B /* main.m */; };
 		E79639E422D401E50058A50B /* InstagrahmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639E322D401E50058A50B /* InstagrahmTests.m */; };
 		E79639EF22D401E50058A50B /* InstagrahmUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639EE22D401E50058A50B /* InstagrahmUITests.m */; };
+		E79639FF22D41C740058A50B /* IGTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639FE22D41C740058A50B /* IGTimelineViewController.m */; };
+		E7963A0222D41E560058A50B /* IGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7963A0122D41E560058A50B /* IGLoginViewController.m */; };
+		E7A6482722D441AF005281B7 /* IGCreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +50,6 @@
 		E79639C722D401E50058A50B /* Instagrahm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrahm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79639CA22D401E50058A50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E79639CB22D401E50058A50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E79639CD22D401E50058A50B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E79639CE22D401E50058A50B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E79639D122D401E50058A50B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E79639D322D401E50058A50B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E79639D622D401E50058A50B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +61,12 @@
 		E79639EA22D401E50058A50B /* InstagrahmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagrahmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79639EE22D401E50058A50B /* InstagrahmUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagrahmUITests.m; sourceTree = "<group>"; };
 		E79639F022D401E50058A50B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E79639FD22D41C740058A50B /* IGTimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGTimelineViewController.h; sourceTree = "<group>"; };
+		E79639FE22D41C740058A50B /* IGTimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGTimelineViewController.m; sourceTree = "<group>"; };
+		E7963A0022D41E560058A50B /* IGLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGLoginViewController.h; sourceTree = "<group>"; };
+		E7963A0122D41E560058A50B /* IGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGLoginViewController.m; sourceTree = "<group>"; };
+		E7A6482522D441AF005281B7 /* IGCreateAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGCreateAccountViewController.h; sourceTree = "<group>"; };
+		E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGCreateAccountViewController.m; sourceTree = "<group>"; };
 		FA5A13EE375F79C23FCD29DC /* Pods-InstagrahmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagrahmUITests.release.xcconfig"; path = "Target Support Files/Pods-InstagrahmUITests/Pods-InstagrahmUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FEE1FF24D3C385FEE6975DBB /* Pods-InstagrahmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagrahmTests.debug.xcconfig"; path = "Target Support Files/Pods-InstagrahmTests/Pods-InstagrahmTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +109,6 @@
 				4280930755880C8EE8F02A82 /* Pods-InstagrahmUITests.debug.xcconfig */,
 				FA5A13EE375F79C23FCD29DC /* Pods-InstagrahmUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,10 +147,9 @@
 		E79639C922D401E50058A50B /* Instagrahm */ = {
 			isa = PBXGroup;
 			children = (
+				E79639FC22D4144E0058A50B /* ViewControllers */,
 				E79639CA22D401E50058A50B /* AppDelegate.h */,
 				E79639CB22D401E50058A50B /* AppDelegate.m */,
-				E79639CD22D401E50058A50B /* ViewController.h */,
-				E79639CE22D401E50058A50B /* ViewController.m */,
 				E79639D022D401E50058A50B /* Main.storyboard */,
 				E79639D322D401E50058A50B /* Assets.xcassets */,
 				E79639D522D401E50058A50B /* LaunchScreen.storyboard */,
@@ -171,6 +175,19 @@
 				E79639F022D401E50058A50B /* Info.plist */,
 			);
 			path = InstagrahmUITests;
+			sourceTree = "<group>";
+		};
+		E79639FC22D4144E0058A50B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E79639FD22D41C740058A50B /* IGTimelineViewController.h */,
+				E79639FE22D41C740058A50B /* IGTimelineViewController.m */,
+				E7963A0022D41E560058A50B /* IGLoginViewController.h */,
+				E7963A0122D41E560058A50B /* IGLoginViewController.m */,
+				E7A6482522D441AF005281B7 /* IGCreateAccountViewController.h */,
+				E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,8 +410,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E79639CF22D401E50058A50B /* ViewController.m in Sources */,
+				E79639FF22D41C740058A50B /* IGTimelineViewController.m in Sources */,
+				E7A6482722D441AF005281B7 /* IGCreateAccountViewController.m in Sources */,
 				E79639DA22D401E50058A50B /* main.m in Sources */,
+				E7963A0222D41E560058A50B /* IGLoginViewController.m in Sources */,
 				E79639CC22D401E50058A50B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
