@@ -20,6 +20,9 @@
 		E79639FF22D41C740058A50B /* IGTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639FE22D41C740058A50B /* IGTimelineViewController.m */; };
 		E7963A0222D41E560058A50B /* IGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7963A0122D41E560058A50B /* IGLoginViewController.m */; };
 		E7A6482722D441AF005281B7 /* IGCreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */; };
+		E7B9F37322D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B9F37222D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.m */; };
+		E7B9F37622D5487400C2E0F2 /* IGMakePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B9F37522D5487400C2E0F2 /* IGMakePostViewController.m */; };
+		E7B9F37D22D56D1100C2E0F2 /* IGPost.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B9F37C22D56D1100C2E0F2 /* IGPost.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,12 @@
 		E7963A0122D41E560058A50B /* IGLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGLoginViewController.m; sourceTree = "<group>"; };
 		E7A6482522D441AF005281B7 /* IGCreateAccountViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGCreateAccountViewController.h; sourceTree = "<group>"; };
 		E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGCreateAccountViewController.m; sourceTree = "<group>"; };
+		E7B9F37122D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGHomeTimelineTableViewCell.h; sourceTree = "<group>"; };
+		E7B9F37222D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGHomeTimelineTableViewCell.m; sourceTree = "<group>"; };
+		E7B9F37422D5487400C2E0F2 /* IGMakePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGMakePostViewController.h; sourceTree = "<group>"; };
+		E7B9F37522D5487400C2E0F2 /* IGMakePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGMakePostViewController.m; sourceTree = "<group>"; };
+		E7B9F37B22D56D1100C2E0F2 /* IGPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGPost.h; sourceTree = "<group>"; };
+		E7B9F37C22D56D1100C2E0F2 /* IGPost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGPost.m; sourceTree = "<group>"; };
 		FA5A13EE375F79C23FCD29DC /* Pods-InstagrahmUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagrahmUITests.release.xcconfig"; path = "Target Support Files/Pods-InstagrahmUITests/Pods-InstagrahmUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FEE1FF24D3C385FEE6975DBB /* Pods-InstagrahmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagrahmTests.debug.xcconfig"; path = "Target Support Files/Pods-InstagrahmTests/Pods-InstagrahmTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +156,8 @@
 		E79639C922D401E50058A50B /* Instagrahm */ = {
 			isa = PBXGroup;
 			children = (
+				E7B9F37722D56C9200C2E0F2 /* Models */,
+				E7B9F37022D53BEE00C2E0F2 /* Views */,
 				E79639FC22D4144E0058A50B /* ViewControllers */,
 				E79639CA22D401E50058A50B /* AppDelegate.h */,
 				E79639CB22D401E50058A50B /* AppDelegate.m */,
@@ -186,8 +197,28 @@
 				E7963A0122D41E560058A50B /* IGLoginViewController.m */,
 				E7A6482522D441AF005281B7 /* IGCreateAccountViewController.h */,
 				E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */,
+				E7B9F37422D5487400C2E0F2 /* IGMakePostViewController.h */,
+				E7B9F37522D5487400C2E0F2 /* IGMakePostViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7B9F37022D53BEE00C2E0F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7B9F37122D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.h */,
+				E7B9F37222D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7B9F37722D56C9200C2E0F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7B9F37B22D56D1100C2E0F2 /* IGPost.h */,
+				E7B9F37C22D56D1100C2E0F2 /* IGPost.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,8 +442,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79639FF22D41C740058A50B /* IGTimelineViewController.m in Sources */,
+				E7B9F37D22D56D1100C2E0F2 /* IGPost.m in Sources */,
+				E7B9F37322D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.m in Sources */,
 				E7A6482722D441AF005281B7 /* IGCreateAccountViewController.m in Sources */,
 				E79639DA22D401E50058A50B /* main.m in Sources */,
+				E7B9F37622D5487400C2E0F2 /* IGMakePostViewController.m in Sources */,
 				E7963A0222D41E560058A50B /* IGLoginViewController.m in Sources */,
 				E79639CC22D401E50058A50B /* AppDelegate.m in Sources */,
 			);

@@ -12,14 +12,23 @@
 #import "IGLoginViewController.h"
 
 @interface IGTimelineViewController ()
+//<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *instaFeedTableView;
 
 @end
 
 @implementation IGTimelineViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    /*
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+     */
 }
 - (IBAction)logoutButton:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -35,6 +44,13 @@
     
 }
 
+
+- (IBAction)postButton:(id)sender {
+    
+    [self performSegueWithIdentifier:@"makePostSegue" sender:nil];
+    
+}
+
 /*
 #pragma mark - Navigation
 
@@ -44,5 +60,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 
 @end
