@@ -10,10 +10,15 @@
 #import "Parse/Parse.h"
 #import "AppDelegate.h"
 #import "IGLoginViewController.h"
+#import "IGPost.h"
+#import "IGHomeTimelineTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
-@interface IGTimelineViewController ()
-//<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface IGTimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *instaFeedTableView;
+// @property (weak, nonatomic) PFQuery *query;
+@property (strong, nonatomic) NSArray *posts;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -22,14 +27,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    /*
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-     */
+    [self fetchPosts];
+    self.instaFeedTableView.delegate = self;
+    self.instaFeedTableView.dataSource = self;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.instaFeedTableView insertSubview:self.refreshControl atIndex:0];
+    
+    
 }
+
 - (IBAction)logoutButton:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -61,6 +70,54 @@
 }
 */
 
+
+-(void) fetchPosts {
+    // construct PFQuery
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    query.limit = 20;
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray<IGPost *> * _Nullable posts, NSError * _Nullable error) {
+        if (!error) {
+            // do something with the data fetched
+            NSLog(@"postsfound");
+            self.posts = posts;
+            NSLog(@"%@", posts);
+            [self.instaFeedTableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+    
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    IGHomeTimelineTableViewCell *cell = [self.instaFeedTableView dequeueReusableCellWithIdentifier:@"IGCell"];
+    
+    IGPost *post = self.posts[indexPath.row];
+    NSString *caption = post.caption;
+    NSString *imageURlString = post.image.url;
+    NSURL *imageURL = [NSURL URLWithString:imageURlString];
+    
+    [cell setCaptionText:caption];
+    [cell setPhotoImageWithURL:imageURL];
+    
+    
+
+    return cell;
+    
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.posts.count;
+}
 
 
 

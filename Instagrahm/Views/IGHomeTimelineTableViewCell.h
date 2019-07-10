@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(UILabel *) getCaption;
 -(UILabel *) getUsername;
 
--(void) setPhotoImage: (UIImageView *) image;
+-(void) setPhotoImageWithURL: (UIImageView *) image;
 -(void) setCaptionText: (NSString *) text;
 -(void) setUsernameText: (NSString *) text;
 

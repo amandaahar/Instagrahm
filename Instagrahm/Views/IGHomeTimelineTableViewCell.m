@@ -7,6 +7,7 @@
 //
 
 #import "IGHomeTimelineTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface IGHomeTimelineTableViewCell()
 @property (weak, nonatomic) IBOutlet UIImageView *photoImage;
@@ -41,8 +42,8 @@
     return self.usernameLabel;
 }
 
--(void) setPhotoImage: (UIImageView *) image {
-    self.photoImage = image;
+-(void) setPhotoImageWithURL: (NSURL *) imageURL {
+    [self.photoImage setImageWithURL:imageURL];
 }
 
 -(void) setCaptionText: (NSString *) text {

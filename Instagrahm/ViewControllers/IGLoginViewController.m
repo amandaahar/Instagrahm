@@ -33,6 +33,9 @@
     [self performSegueWithIdentifier:@"signInSegue" sender:nil];
     
 }
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (void)loginUser {
     NSString *username = self.usernameText.text;
