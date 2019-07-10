@@ -1,17 +1,18 @@
 //
 //  IGPost.h
-//  Instagrahm
-//
-//  Created by amandahar on 7/9/19.
-//  Copyright © 2019 amandahar. All rights reserved.
-//
+#import <Foundation/Foundation.h>
+#import "Parse/Parse.h"
+@interface IGPost : PFObject<PFSubclassing>
 
-#import <Parse/Parse.h>
+@property (nonatomic, strong) NSString *postID;
+@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) PFUser *author;
 
-NS_ASSUME_NONNULL_BEGIN
+@property (nonatomic, strong) NSString *caption;
+@property (nonatomic, strong) PFFileObject *image;
+@property (nonatomic, strong) NSNumber *likeCount;
+@property (nonatomic, strong) NSNumber *commentCount;
 
-@interface IGPost : PFObject
++ (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
-
-NS_ASSUME_NONNULL_END

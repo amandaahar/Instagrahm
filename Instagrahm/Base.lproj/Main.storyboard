@@ -322,12 +322,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="shareButton:" destination="1qd-rN-Uxk" eventType="touchUpInside" id="PIt-lc-oyu"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="composeCaption" destination="vDp-df-XtV" id="mKv-wq-VDZ"/>
                         <outlet property="composePostImage" destination="MFH-OV-vc4" id="mqY-D1-GkB"/>
+                        <outlet property="tapImageLabel" destination="8yM-OI-1yD" id="2Ux-wf-CFY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x98-2B-6s7" userLabel="First Responder" sceneMemberID="firstResponder"/>

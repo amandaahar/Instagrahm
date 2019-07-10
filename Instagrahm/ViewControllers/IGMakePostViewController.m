@@ -8,11 +8,13 @@
 
 #import "IGMakePostViewController.h"
 #import <UIKit/UIKit.h>
+#import "IGPost.h"
 
 
 @interface IGMakePostViewController () 
 @property (weak, nonatomic) IBOutlet UIImageView *composePostImage;
 @property (weak, nonatomic) IBOutlet UITextField *composeCaption;
+@property (weak, nonatomic) IBOutlet UILabel *tapImageLabel;
 
 
 @end
@@ -64,6 +66,32 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)shareButton:(id)sender {
+    [IGPost postUserImage:self.composePostImage.image withCaption:self.composeCaption.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        //completion
+        if (succeeded) {
+            NSLog(@"posted");
+        } else {
+            NSLog(@"wromng");
+        }
+    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
@@ -71,10 +99,16 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
+    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(200, 200)];
+    self.composePostImage.image = resizedImage;
+    
+    [self.tapImageLabel setHidden:YES];
     
     // Dismiss UIImagePickerController to go back to your original view controller
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 /*
