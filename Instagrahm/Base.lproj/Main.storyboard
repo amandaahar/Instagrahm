@@ -160,14 +160,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R6M-Gu-kJR">
-                                <rect key="frame" x="139" y="412" width="255" height="30"/>
+                                <rect key="frame" x="141" y="412" width="255" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fl2-L8-lxc">
-                                <rect key="frame" x="141" y="463" width="132" height="56"/>
+                                <rect key="frame" x="146" y="465" width="132" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Create Account"/>
@@ -175,9 +175,22 @@
                                     <action selector="didTapCreateAccount:" destination="tH4-oz-yJx" eventType="touchUpInside" id="NBQ-Ez-8cc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGs-R3-5zR">
+                                <rect key="frame" x="178" y="548" width="59" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="didTapCancel:" destination="tH4-oz-yJx" eventType="touchUpInside" id="aNU-w2-FTn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="Wi3-k1-t3u"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iCG-9M-O4K" appends="YES" id="HVE-yE-IcN"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="Yed-c1-Xui" id="S6n-in-KAm"/>
@@ -186,6 +199,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U9c-9c-8y3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iCG-9M-O4K">
+                    <connections>
+                        <action selector="onTap:" destination="tH4-oz-yJx" id="Sgn-My-Py8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="77" y="734"/>
         </scene>
@@ -233,6 +251,7 @@
                                             <outlet property="captionLabel" destination="ucH-Gn-81j" id="aYt-xE-YiD"/>
                                             <outlet property="photoImage" destination="5MW-NE-Io0" id="V3x-7c-gFQ"/>
                                             <outlet property="usernameLabel" destination="RdM-Is-en8" id="ah6-Jh-z0L"/>
+                                            <segue destination="uFV-OJ-fUJ" kind="show" identifier="detailsSegue" id="eEL-Ge-hMn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -260,19 +279,59 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Post"/>
                                 <connections>
-                                    <action selector="postButton:" destination="L2D-UT-aOn" eventType="touchUpInside" id="VNW-5g-cKv"/>
+                                    <action selector="postButton:" destination="L2D-UT-aOn" eventType="touchUpInside" id="GkI-2Q-Z3W"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="instaFeedTableView" destination="EHJ-FV-Y2G" id="3eu-yd-SV5"/>
-                        <segue destination="IC3-r0-aCw" kind="presentation" identifier="makePostSegue" id="lgc-b7-aJA"/>
+                        <segue destination="IC3-r0-aCw" kind="presentation" identifier="makePostSegue" id="WCi-Z0-3au"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcu-wh-XUN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1956.521739130435" y="30.803571428571427"/>
+            <point key="canvasLocation" x="2075" y="31"/>
+        </scene>
+        <!--Post Details View Controller-->
+        <scene sceneID="lLq-6w-GKv">
+            <objects>
+                <viewController id="uFV-OJ-fUJ" customClass="IGPostDetailsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Isi-zt-Thd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hzr-bs-P5j">
+                                <rect key="frame" x="0.0" y="129" width="414" height="414"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1z-oo-im1">
+                                <rect key="frame" x="20" y="551" width="374" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Stamp" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAm-Rz-3QG">
+                                <rect key="frame" x="20" y="612" width="374" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QxR-a5-VlD"/>
+                    </view>
+                    <connections>
+                        <outlet property="captionText" destination="e1z-oo-im1" id="YNc-FU-oTK"/>
+                        <outlet property="postImage" destination="Hzr-bs-P5j" id="hfC-bf-M03"/>
+                        <outlet property="timeStampLabel" destination="RAm-Rz-3QG" id="Ods-Hn-ojP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ieb-Np-wZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1956.521739130435" y="733.92857142857144"/>
         </scene>
         <!--Make Post View Controller-->
         <scene sceneID="whZ-pr-vvq">

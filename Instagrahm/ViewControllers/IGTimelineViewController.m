@@ -13,6 +13,7 @@
 #import "IGPost.h"
 #import "IGHomeTimelineTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "IGPostDetailsViewController.h"
 
 @interface IGTimelineViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *instaFeedTableView;
@@ -36,6 +37,7 @@
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.instaFeedTableView insertSubview:self.refreshControl atIndex:0];
     
+    NSLog(@"here is %@", PFUser.currentUser);
     
 }
 
@@ -56,19 +58,34 @@
 
 - (IBAction)postButton:(id)sender {
     
+    // if ([segue.identifier isEq])
+    
     [self performSegueWithIdentifier:@"makePostSegue" sender:nil];
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    // for segue idetifier put in details segue
+    
+    if ([segue.identifier isEqualToString:@"detailsSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.instaFeedTableView indexPathForCell:tappedCell];
+        IGPost *post = self.posts[indexPath.row];
+        
+        IGPostDetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
+    
+    
+    
 }
-*/
+
 
 
 -(void) fetchPosts {
@@ -78,6 +95,7 @@
     
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
     query.limit = 20;
     
     // fetch data asynchronously
@@ -86,7 +104,6 @@
             // do something with the data fetched
             NSLog(@"postsfound");
             self.posts = posts;
-            NSLog(@"%@", posts);
             [self.instaFeedTableView reloadData];
         }
         else {
@@ -105,9 +122,13 @@
     NSString *caption = post.caption;
     NSString *imageURlString = post.image.url;
     NSURL *imageURL = [NSURL URLWithString:imageURlString];
+    NSString *author = post.author.username;
+    
     
     [cell setCaptionText:caption];
     [cell setPhotoImageWithURL:imageURL];
+    [cell setUsernameText:author];
+    
     
     
 
@@ -119,6 +140,16 @@
     return self.posts.count;
 }
 
+
+/*
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    IGPost *post = self.posts[indexPath.row];
+    
+    
+    // [self performSegueWithIdentifier:@"detailsSegue" sender:post];
+}
+ */
+ 
 
 
 @end

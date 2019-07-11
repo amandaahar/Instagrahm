@@ -8,6 +8,7 @@ target 'Instagrahm' do
   # Pods for Instagrahm
 	pod 'Parse'
 	pod 'AFNetworking'
+	pod 'DateTools'
 
   target 'InstagrahmTests' do
     inherit! :search_paths

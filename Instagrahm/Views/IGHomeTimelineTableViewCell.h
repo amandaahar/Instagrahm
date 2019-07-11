@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IGHomeTimelineTableViewCell : UITableViewCell
@@ -16,9 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 -(UILabel *) getCaption;
 -(UILabel *) getUsername;
 
+
 -(void) setPhotoImageWithURL: (UIImageView *) image;
 -(void) setCaptionText: (NSString *) text;
 -(void) setUsernameText: (NSString *) text;
+
 
 @end
 

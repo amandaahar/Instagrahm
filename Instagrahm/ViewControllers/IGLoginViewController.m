@@ -29,9 +29,6 @@
 
 - (IBAction)didTapSignIn:(id)sender {
     [self loginUser];
-    
-    [self performSegueWithIdentifier:@"signInSegue" sender:nil];
-    
 }
 - (IBAction)onTap:(id)sender {
     [self.view endEditing:YES];
@@ -46,7 +43,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
-            
+            [self performSegueWithIdentifier:@"signInSegue" sender:nil];
             // display view controller that needs to shown after successful login --- present VC or segue to VC??
         }
     }];

@@ -10,6 +10,7 @@
 		5B08E964974D558355E3EF04 /* Pods_Instagrahm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D320F3669FFC647395DA6D67 /* Pods_Instagrahm.framework */; };
 		C7B06A1F9E2E4254A4AD46D3 /* Pods_InstagrahmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C4D7DF007FA973D737DFA31 /* Pods_InstagrahmTests.framework */; };
 		E3B23ED5298A6378DB733426 /* Pods_InstagrahmUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4EFD25B692A82340B01E87 /* Pods_InstagrahmUITests.framework */; };
+		E71C173622D6AF720012DCD9 /* IGPostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E71C173522D6AF720012DCD9 /* IGPostDetailsViewController.m */; };
 		E79639CC22D401E50058A50B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E79639CB22D401E50058A50B /* AppDelegate.m */; };
 		E79639D222D401E50058A50B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E79639D022D401E50058A50B /* Main.storyboard */; };
 		E79639D422D401E50058A50B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79639D322D401E50058A50B /* Assets.xcassets */; };
@@ -50,6 +51,8 @@
 		5C4D7DF007FA973D737DFA31 /* Pods_InstagrahmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstagrahmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C330ACF4C1FB4BEED4C2DC99 /* Pods-Instagrahm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagrahm.release.xcconfig"; path = "Target Support Files/Pods-Instagrahm/Pods-Instagrahm.release.xcconfig"; sourceTree = "<group>"; };
 		D320F3669FFC647395DA6D67 /* Pods_Instagrahm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagrahm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E71C173422D6AF720012DCD9 /* IGPostDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGPostDetailsViewController.h; sourceTree = "<group>"; };
+		E71C173522D6AF720012DCD9 /* IGPostDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGPostDetailsViewController.m; sourceTree = "<group>"; };
 		E79639C722D401E50058A50B /* Instagrahm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrahm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79639CA22D401E50058A50B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E79639CB22D401E50058A50B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				E7A6482622D441AF005281B7 /* IGCreateAccountViewController.m */,
 				E7B9F37422D5487400C2E0F2 /* IGMakePostViewController.h */,
 				E7B9F37522D5487400C2E0F2 /* IGMakePostViewController.m */,
+				E71C173422D6AF720012DCD9 /* IGPostDetailsViewController.h */,
+				E71C173522D6AF720012DCD9 /* IGPostDetailsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 				E7B9F37322D53C2B00C2E0F2 /* IGHomeTimelineTableViewCell.m in Sources */,
 				E7A6482722D441AF005281B7 /* IGCreateAccountViewController.m in Sources */,
 				E79639DA22D401E50058A50B /* main.m in Sources */,
+				E71C173622D6AF720012DCD9 /* IGPostDetailsViewController.m in Sources */,
 				E7B9F37622D5487400C2E0F2 /* IGMakePostViewController.m in Sources */,
 				E7963A0222D41E560058A50B /* IGLoginViewController.m in Sources */,
 				E79639CC22D401E50058A50B /* AppDelegate.m in Sources */,

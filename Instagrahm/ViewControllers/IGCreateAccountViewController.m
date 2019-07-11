@@ -49,6 +49,15 @@
     [self registerUser];
 }
 
+- (IBAction)didTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
+}
+
 /*
 #pragma mark - Navigation
 
