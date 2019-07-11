@@ -16,7 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *captionText;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeStampLabel;
-//@property (strong, nonatomic) IGPost *post;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+
 
 @end
 
@@ -28,10 +29,12 @@
     NSString *caption = self.post.caption;
     NSString *imageURlString = self.post.image.url;
     NSURL *imageURL = [NSURL URLWithString:imageURlString];
+    NSString *username = self.post.author.username;
     NSDate *timeStamp = self.post.createdAt;
     
     self.captionText.text = caption;
     [self.postImage setImageWithURL:imageURL];
+    self.usernameLabel.text = username;
     self.timeStampLabel.text = timeStamp.timeAgoSinceNow;
 }
 

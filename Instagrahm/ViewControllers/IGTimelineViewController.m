@@ -15,11 +15,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "IGPostDetailsViewController.h"
 
-@interface IGTimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface IGTimelineViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *instaFeedTableView;
 // @property (weak, nonatomic) PFQuery *query;
-@property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (strong, nonatomic) NSArray *olderPosts;
 
 @end
 
@@ -140,15 +142,42 @@
     return self.posts.count;
 }
 
-
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    IGPost *post = self.posts[indexPath.row];
+-(void) loadMoreData {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    IGPost *lastPost = self.posts[self.posts.count - 1];
+    self.olderPosts = self.posts;
+    
+    [query whereKey:@"createdAt" lessThan:lastPost.createdAt];
+    query.limit = 20;
+    
+    [self.posts addObjectsFromArray:self.olderPosts];
+    
+    [self.instaFeedTableView reloadData];
     
     
-    // [self performSegueWithIdentifier:@"detailsSegue" sender:post];
+    // NSLog(@"%lu", (unsigned long)self.posts.count);
+    //NSLog(@"%@", self.posts);
+    
+    
 }
- */
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.instaFeedTableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.instaFeedTableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.instaFeedTableView.isDragging) {
+            self.isMoreDataLoading = true;
+            [self loadMoreData];
+            // ... Code to load more results ...
+        }
+    }
+}
+
+
+
  
 
 
