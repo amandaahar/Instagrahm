@@ -145,18 +145,29 @@
 -(void) loadMoreData {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     IGPost *lastPost = self.posts[self.posts.count - 1];
-    self.olderPosts = self.posts;
+    
     
     [query whereKey:@"createdAt" lessThan:lastPost.createdAt];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
+    
     query.limit = 20;
     
-    [self.posts addObjectsFromArray:self.olderPosts];
-    
-    [self.instaFeedTableView reloadData];
-    
-    
-    // NSLog(@"%lu", (unsigned long)self.posts.count);
-    //NSLog(@"%@", self.posts);
+    [query findObjectsInBackgroundWithBlock:^(NSArray<IGPost *> * _Nullable posts, NSError * _Nullable error) {
+        if (!error) {
+            // do something with the data fetched
+            NSLog(@"postsfound");
+            self.olderPosts = posts;
+            [self.posts addObjectsFromArray:self.olderPosts];
+            [self.instaFeedTableView reloadData];
+        }
+        else {
+            // handle error
+            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+        }
+        // [self.refreshControl endRefreshing];
+    }];
     
     
 }
