@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)registerUser {
@@ -37,8 +36,6 @@
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
-            NSLog(@"User registered successfully");
-            
             // manually segue to logged in view
             [self dismissViewControllerAnimated:YES completion:nil];
         }

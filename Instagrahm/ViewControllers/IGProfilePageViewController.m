@@ -46,14 +46,12 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray<IGPost *> * _Nullable posts, NSError * _Nullable error) {
         if (!error) {
             // do something with the data fetched
-            
-            NSLog(@"postsfound");
             [self.posts addObjectsFromArray:posts];
             [self.profilePageCollectionView reloadData];
         }
         else {
             // handle error
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            NSLog(@"Error getting home timeline: %@", error.localizedDescription);
         }
         
     }];

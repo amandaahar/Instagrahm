@@ -22,8 +22,6 @@
 @implementation IGMakePostViewController
 
 -(void) tapImage:(id)sender{
-    NSLog(@"imageTapped");
-    
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -34,7 +32,7 @@
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        // camera is not available so photo library will pop up instead
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
@@ -72,7 +70,7 @@
         if (succeeded) {
             NSLog(@"posted");
         } else {
-            NSLog(@"wromng");
+            NSLog(@"wrong");
         }
     }];
     [self dismissViewControllerAnimated:YES completion:nil];

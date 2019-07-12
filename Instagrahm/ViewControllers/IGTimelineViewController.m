@@ -24,7 +24,6 @@
 @property (strong, nonatomic) InfiniteScrollActivityView *loadingMoreView;
 @property (assign, nonatomic) BOOL isMoreDataLoadingOnScroll;
 
-//@property (strong, nonatomic) NSArray *olderPosts;
 
 @end
 
@@ -76,8 +75,7 @@
 
 
 - (IBAction)postButton:(id)sender {
-    
-    // if ([segue.identifier isEq])
+
     
     [self performSegueWithIdentifier:@"makePostSegue" sender:nil];
     
@@ -121,13 +119,12 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray<IGPost *> * _Nullable posts, NSError * _Nullable error) {
         if (!error) {
             // do something with the data fetched
-            NSLog(@"postsfound");
             [self.posts addObjectsFromArray:posts];
             [self.instaFeedTableView reloadData];
         }
         else {
             // handle error
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            NSLog(@"Error getting home timeline: %@", error.localizedDescription);
         }
         [self.refreshControl endRefreshing];
     }];
@@ -147,9 +144,6 @@
     [cell setCaptionText:caption];
     [cell setPhotoImageWithURL:imageURL];
     [cell setUsernameText:author];
-    
-    
-    
 
     return cell;
     
@@ -174,11 +168,10 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray<IGPost *> * _Nullable posts, NSError * _Nullable error) {
         if (!error) {
             // do something with the data fetched
-            NSLog(@"postsfound");
             [self.posts addObjectsFromArray:posts];
             
             // Update flag
-            self.isMoreDataLoading = false;
+            self.isMoreDataLoadingOnScroll = false;
             
             // Stop the loading indicator
             [self.loadingMoreView stopAnimating];
@@ -186,9 +179,8 @@
         }
         else {
             // handle error
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            NSLog(@"Error getting home timeline: %@", error.localizedDescription);
         }
-        // [self.refreshControl endRefreshing];
     }];
     
     
@@ -202,7 +194,7 @@
         
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.instaFeedTableView.isDragging) {
-            self.isMoreDataLoading = true;
+            self.isMoreDataLoadingOnScroll = true;
             
             // Update position of loadingMoreView, and start loading indicator
             CGRect frame = CGRectMake(0, self.instaFeedTableView.contentSize.height, self.instaFeedTableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);

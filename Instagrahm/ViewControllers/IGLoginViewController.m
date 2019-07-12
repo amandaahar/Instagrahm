@@ -19,9 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
-
 
 - (IBAction)didTapSignUp:(id)sender {
     [self performSegueWithIdentifier:@"createAccountSegue" sender:nil];
@@ -42,9 +40,8 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
-            NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"signInSegue" sender:nil];
-            // display view controller that needs to shown after successful login --- present VC or segue to VC??
+            // display view controller that needs to shown after successful login 
         }
     }];
 }
