@@ -14,14 +14,17 @@
 #import "IGHomeTimelineTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "IGPostDetailsViewController.h"
+#import "IGInfiniteScrollActivityView.h"
 
 @interface IGTimelineViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *instaFeedTableView;
-// @property (weak, nonatomic) PFQuery *query;
 @property (strong, nonatomic) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
-@property (strong, nonatomic) NSArray *olderPosts;
+@property (strong, nonatomic) InfiniteScrollActivityView *loadingMoreView;
+@property (assign, nonatomic) BOOL isMoreDataLoadingOnScroll;
+
+//@property (strong, nonatomic) NSArray *olderPosts;
 
 @end
 
@@ -39,7 +42,21 @@
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.instaFeedTableView insertSubview:self.refreshControl atIndex:0];
     
-    NSLog(@"here is %@", PFUser.currentUser);
+    
+    
+    CGRect frame = CGRectMake(0, self.instaFeedTableView.contentSize.height, self.instaFeedTableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    self.loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    self.loadingMoreView.hidden = true;
+    [self.instaFeedTableView addSubview:self.loadingMoreView];
+    
+    UIEdgeInsets insets = self.instaFeedTableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.instaFeedTableView.contentInset = insets;
+    
+    
+    self.posts = [[NSMutableArray alloc] init];
+    
+    
     
 }
 
@@ -105,7 +122,7 @@
         if (!error) {
             // do something with the data fetched
             NSLog(@"postsfound");
-            self.posts = posts;
+            [self.posts addObjectsFromArray:posts];
             [self.instaFeedTableView reloadData];
         }
         else {
@@ -158,8 +175,13 @@
         if (!error) {
             // do something with the data fetched
             NSLog(@"postsfound");
-            self.olderPosts = posts;
-            [self.posts addObjectsFromArray:self.olderPosts];
+            [self.posts addObjectsFromArray:posts];
+            
+            // Update flag
+            self.isMoreDataLoading = false;
+            
+            // Stop the loading indicator
+            [self.loadingMoreView stopAnimating];
             [self.instaFeedTableView reloadData];
         }
         else {
@@ -181,8 +203,14 @@
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.instaFeedTableView.isDragging) {
             self.isMoreDataLoading = true;
+            
+            // Update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.instaFeedTableView.contentSize.height, self.instaFeedTableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            self.loadingMoreView.frame = frame;
+            [self.loadingMoreView startAnimating];
+            
+            // Code to load more results
             [self loadMoreData];
-            // ... Code to load more results ...
         }
     }
 }
