@@ -1,28 +1,28 @@
-# Project 4 - *Name of App Here*
+# Project 4 - Instagrahm
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+Instagrahm is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: 18 hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User can sign up to create a new account using Parse authentication
-- [ ] User can log in and log out of his or her account
-- [ ] The current signed in user is persisted across app restarts
-- [ ] User can take a photo, add a caption, and post it to "Instagram"
-- [ ] User can view the last 20 posts submitted to "Instagram"
-- [ ] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can tap a post to view post details, including timestamp and caption.
+- [X] User can sign up to create a new account using Parse authentication
+- [X] User can log in and log out of his or her account
+- [X] The current signed in user is persisted across app restarts
+- [X] User can take a photo, add a caption, and post it to "Instagram"
+- [X] User can view the last 20 posts submitted to "Instagram"
+- [X] User can pull to refresh the last 20 posts submitted to "Instagram"
+- [X] User can tap a post to view post details, including timestamp and caption.
 
 The following **optional** features are implemented:
 
-- [ ] Run your app on your phone and use the camera to take the photo
-- [ ] Style the login page to look like the real Instagram login page.
+- [X] Run your app on your phone and use the camera to take the photo
+- [X] Style the login page to look like the real Instagram login page.
 - [ ] Style the feed to look like the real Instagram feed.
-- [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
-- [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+- [X] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
+- [X] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [ ] Show the username and creation time for each post
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
@@ -39,16 +39,16 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1.I would like more background on how Parse creates a backend for our apps
+2.A way to implement the infinite scroll without it being glitchy
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/ksK8J4Ief9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [RecordIt](https://recordit.co/).
 
 ## Credits
 
@@ -63,7 +63,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2019] [name of copyright owner]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
